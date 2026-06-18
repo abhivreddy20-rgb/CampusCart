@@ -61,13 +61,23 @@ export function CategoryPage({
         <YStack gap="$1">
           <Text
             color="#8a4a24"
+            fontFamily="Inter"
             fontSize={12}
-            fontWeight="900"
+            lineHeight={18}
+            fontWeight="400"
             textTransform="uppercase"
+            $sm={{ fontSize: 11, lineHeight: 16 }}
           >
             How to pack it
           </Text>
-          <Text color="#18231f" fontSize={17} fontWeight="900">
+          <Text
+            color="#18231f"
+            fontFamily="Sora"
+            fontSize={20}
+            lineHeight={28}
+            fontWeight="600"
+            $sm={{ fontSize: 16, lineHeight: 22 }}
+          >
             {selectedCategory.title} packing instructions
           </Text>
         </YStack>
@@ -77,7 +87,15 @@ export function CategoryPage({
               <Square size={24} borderRadius={6} backgroundColor="#f1dfc8">
                 <CheckCircle2 size={15} color="#b7602d" />
               </Square>
-              <Text flex={1} color="#5f6b66" lineHeight={22}>
+              <Text
+                flex={1}
+                color="#5f6b66"
+                fontFamily="Inter"
+                fontSize={16}
+                lineHeight={26}
+                fontWeight="400"
+                $sm={{ fontSize: 13, lineHeight: 20 }}
+              >
                 {instruction}
               </Text>
             </XStack>

@@ -4,6 +4,7 @@ import type { FormState, StepId } from "../types";
 
 export const steps: { id: StepId; label: string }[] = [
   { id: "home", label: "Motto" },
+  { id: "preRegistration", label: "Pre Register" },
   { id: "login", label: "Login" },
   { id: "registration", label: "Register" },
   { id: "college", label: "College" },
