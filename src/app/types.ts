@@ -1,5 +1,6 @@
 export type StepId =
   | 'home'
+  | 'preRegistration'
   | 'login'
   | 'registration'
   | 'college'
@@ -33,6 +34,17 @@ export type SavedOrder = {
 
 export type SavedRegistration = {
   id: string
+}
+
+export type PreRegistrationForm = {
+  name: string
+  email: string
+  phone: string
+  college: string
+}
+
+export type SavedPreRegistration = {
+  id?: string
 }
 
 export type ParentProfile = {

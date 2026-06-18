@@ -37,11 +37,9 @@ const campusRunItems = [
 ];
 
 export function HomePage({
-  onStart,
-  onLogin,
+  onPreRegister,
 }: {
-  onStart: () => void;
-  onLogin: () => void;
+  onPreRegister: () => void;
 }) {
   return (
     <YStack flex={1}>
@@ -111,20 +109,9 @@ export function HomePage({
               shadowColor="rgba(183, 96, 45, 0.28)"
               shadowRadius={18}
               shadowOffset={{ width: 0, height: 10 }}
-              onPress={onStart}
+              onPress={onPreRegister}
             >
-              Get Started
-            </Button>
-            <Button
-              size="$5"
-              borderRadius={8}
-              backgroundColor="#fbfaf7"
-              borderColor="#cdbfae"
-              borderWidth={1}
-              color="#1f2b27"
-              onPress={onLogin}
-            >
-              Login
+              Pre Register
             </Button>
           </XStack>
           <XStack gap="$3" flexWrap="wrap" paddingTop="$1">

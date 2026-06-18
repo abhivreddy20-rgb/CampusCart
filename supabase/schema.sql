@@ -29,6 +29,16 @@ CREATE TABLE IF NOT EXISTS public.parent_profiles (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS public.pre_registrations (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  parent_name TEXT NOT NULL,
+  parent_email TEXT NOT NULL UNIQUE,
+  parent_phone TEXT NOT NULL,
+  college_name TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS public.orders (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   order_number TEXT NOT NULL UNIQUE,
@@ -57,12 +67,18 @@ CREATE INDEX IF NOT EXISTS orders_parent_profile_id_idx ON public.orders(parent_
 CREATE INDEX IF NOT EXISTS orders_status_idx ON public.orders(status);
 CREATE INDEX IF NOT EXISTS orders_created_at_idx ON public.orders(created_at);
 CREATE INDEX IF NOT EXISTS parent_profiles_parent_email_idx ON public.parent_profiles(parent_email);
+CREATE INDEX IF NOT EXISTS pre_registrations_parent_email_idx ON public.pre_registrations(parent_email);
+CREATE INDEX IF NOT EXISTS pre_registrations_college_name_idx ON public.pre_registrations(college_name);
 CREATE INDEX IF NOT EXISTS pickup_locations_college_active_sort_idx ON public.pickup_locations(college_id, active, sort_order);
 
 ALTER TABLE public.colleges ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.pickup_locations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.parent_profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.pre_registrations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+
+GRANT USAGE ON SCHEMA public TO anon, authenticated;
+GRANT INSERT ON public.pre_registrations TO anon, authenticated;
 
 CREATE POLICY "Anyone can read active colleges"
 ON public.colleges
@@ -84,6 +100,12 @@ WITH CHECK (TRUE);
 
 CREATE POLICY "Anyone can create prototype parent profiles"
 ON public.parent_profiles
+FOR INSERT
+TO anon, authenticated
+WITH CHECK (TRUE);
+
+CREATE POLICY "Anyone can create pre registrations"
+ON public.pre_registrations
 FOR INSERT
 TO anon, authenticated
 WITH CHECK (TRUE);

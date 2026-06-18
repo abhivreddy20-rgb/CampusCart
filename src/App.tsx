@@ -12,6 +12,7 @@ import { ConfirmationPage } from './app/pages/ConfirmationPage'
 import { HomePage } from './app/pages/HomePage'
 import { LoginPage } from './app/pages/LoginPage'
 import { PaymentPage } from './app/pages/PaymentPage'
+import { PreRegistrationPage } from './app/pages/PreRegistrationPage'
 import { RegistrationPage } from './app/pages/RegistrationPage'
 import { StudentPage } from './app/pages/StudentPage'
 import { TermsPage } from './app/pages/TermsPage'
@@ -238,7 +239,11 @@ function App() {
   return (
     <AppShell>
       {currentStep === 'home' && (
-        <HomePage onStart={() => navigateTo('registration')} onLogin={() => navigateTo('login')} />
+        <HomePage onPreRegister={() => navigateTo('preRegistration')} />
+      )}
+
+      {currentStep === 'preRegistration' && (
+        <PreRegistrationPage onBack={goBack} onSuccess={() => replaceWith('home', [])} />
       )}
 
       {currentStep === 'login' && <LoginPage onBack={goBack} onSuccess={handleLoginSuccess} />}
