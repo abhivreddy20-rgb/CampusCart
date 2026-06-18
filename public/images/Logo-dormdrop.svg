@@ -1,0 +1,25 @@
+<svg width="900" height="320" viewBox="0 0 900 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">DormDrop Express</title>
+  <desc id="desc">DormDrop Express campus delivery logo</desc>
+  <defs>
+    <linearGradient id="orange" x1="86" y1="46" x2="532" y2="160" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e17816"/>
+      <stop offset="1" stop-color="#c85f0c"/>
+    </linearGradient>
+    <linearGradient id="green" x1="120" y1="208" x2="781" y2="276" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#092f21"/>
+      <stop offset="1" stop-color="#154d35"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="88" y="42" width="448" height="124" rx="10" fill="url(#orange)"/>
+  <text x="112" y="123" fill="white" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="900" letter-spacing="5">DORMDROP</text>
+
+  <path d="M560 58h28c11 0 20 9 20 20v42h108c33 0 63 18 79 47l17 31H762c-8-21-28-36-52-36H608v-34h-48V58Z" fill="#0b3324"/>
+  <path d="M608 119h84c36 0 69 20 86 52l15 28h-58l-8-14c-9-15-25-24-42-24h-77v-42Z" fill="#154d35"/>
+  <path d="M88 188h662c0-31 25-56 56-56s56 25 56 56" stroke="#d86d13" stroke-width="16" stroke-linecap="round"/>
+  <path d="M770 188a36 36 0 0 1 72 0" stroke="#d86d13" stroke-width="18" stroke-linecap="round"/>
+
+  <text x="96" y="268" fill="url(#green)" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="900" letter-spacing="12">EXPRESS</text>
+  <text x="98" y="306" fill="#123b2c" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="12">CAMPUS CARE, DROPPED TODAY.</text>
+</svg>

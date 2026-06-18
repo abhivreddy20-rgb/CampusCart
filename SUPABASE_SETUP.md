@@ -8,6 +8,8 @@
 -- Copy and run the contents of supabase/schema.sql
 ```
 
+For an existing Supabase database that already has `orders`, run `supabase/add_registration_profiles.sql` once to add the registration table and order link.
+
 3. Create a local `.env` file from `.env.example`:
 
 ```bash
@@ -27,4 +29,4 @@ VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
 npm run dev
 ```
 
-The payment step now inserts an order into the `orders` table. The current setup allows public prototype order creation through the anon key, which is fine for local MVP testing. Before production, move order creation behind authenticated users or a Supabase Edge Function.
+The registration step now upserts a parent profile into `parent_profiles`, and the payment step inserts an order into `orders` linked by `parent_profile_id`. The current setup allows public prototype registration and order creation through the anon key, which is fine for local MVP testing. Before production, move these writes behind authenticated users or a Supabase Edge Function.
