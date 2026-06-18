@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Check, FileText, ShieldCheck } from 'lucide-react'
+import { Check, ChevronDown, FileText, ShieldCheck } from 'lucide-react'
 import { Button, Dialog, Input, Label, ScrollView, Select, Square, Text, XStack, YStack } from 'tamagui'
 
 import { savePreRegistration } from '../api/preRegistrations'
@@ -28,7 +28,7 @@ export function PreRegistrationPage({
     name: '',
     email: '',
     phone: '',
-    college: collegeOptions[0],
+    college: '',
   })
   const [isSaving, setIsSaving] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -126,7 +126,14 @@ export function PreRegistrationPage({
               College
             </Label>
             <Select value={form.college} onValueChange={(value) => updateForm('college', value)}>
-              <Select.Trigger>
+              <Select.Trigger
+                backgroundColor="#fffdf8"
+                borderColor="#d7cdbc"
+                borderWidth={1}
+                color="#18231f"
+                borderRadius={8}
+                iconAfter={<ChevronDown size={18} color="#8a623d" />}
+              >
                 <Select.Value placeholder="Choose college" />
               </Select.Trigger>
               <Select.Content>
@@ -288,28 +295,53 @@ function PriceTile({
       flex={1}
       minWidth={250}
       gap="$2"
-      padding="$4"
+      padding="$3"
       borderRadius={8}
       borderWidth={1}
       borderColor="#d9c3aa"
       backgroundColor="#fff8ed"
+      $sm={{ minWidth: 0, padding: "$2.5", gap: "$1.5" }}
     >
-      <Text color="#8a4a24" fontSize={12} fontWeight="900" textTransform="uppercase">
+      <Text
+        color="#8a4a24"
+        fontFamily="Inter"
+        fontSize={12}
+        lineHeight={18}
+        fontWeight="700"
+        textTransform="uppercase"
+        $sm={{ fontSize: 11, lineHeight: 16 }}
+      >
         {eyebrow}
       </Text>
       <XStack justifyContent="space-between" gap="$3" alignItems="baseline">
-        <Text color="#68746f" fontWeight="800">
+        <Text color="#68746f" fontFamily="Inter" fontSize={14} lineHeight={20} fontWeight="600">
           Regular
         </Text>
-        <Text color="#18231f" fontSize={24} fontWeight="900">
+        <Text
+          color="#18231f"
+          fontFamily="Sora"
+          fontSize={18}
+          lineHeight={24}
+          fontWeight="600"
+          textDecorationLine="line-through"
+          opacity={0.58}
+          $sm={{ fontSize: 16, lineHeight: 22 }}
+        >
           {regular}
         </Text>
       </XStack>
       <XStack justifyContent="space-between" gap="$3" alignItems="baseline">
-        <Text color="#8a4a24" fontWeight="900">
+        <Text color="#8a4a24" fontFamily="Inter" fontSize={14} lineHeight={20} fontWeight="700">
           Pre-register
         </Text>
-        <Text color="#b7602d" fontSize={30} fontWeight="900">
+        <Text
+          color="#b7602d"
+          fontFamily="Sora"
+          fontSize={22}
+          lineHeight={28}
+          fontWeight="700"
+          $sm={{ fontSize: 18, lineHeight: 24 }}
+        >
           {preorder}
         </Text>
       </XStack>
