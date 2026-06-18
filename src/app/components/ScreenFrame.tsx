@@ -38,19 +38,34 @@ export function ScreenFrame({
           $sm={{ padding: "$4" }}
         >
           <YStack gap="$2">
-            <Text color="#8a623d" fontSize={12} fontWeight="900" textTransform="uppercase">
+            <Text
+              color="#8a623d"
+              fontFamily="Inter"
+              fontSize={14}
+              lineHeight={22}
+              fontWeight="400"
+              textTransform="uppercase"
+            >
               {eyebrow}
             </Text>
             <H2
               color="#151f1c"
-              fontSize={36}
-              lineHeight={42}
-              fontWeight="900"
-              $sm={{ fontSize: 29, lineHeight: 35 }}
+              fontFamily="Sora"
+              fontSize={32}
+              lineHeight={40}
+              fontWeight="700"
+              $sm={{ fontSize: 24, lineHeight: 32 }}
             >
               {title}
             </H2>
-            <Paragraph color="#63716c" fontSize={17} lineHeight={27}>
+            <Paragraph
+              color="#63716c"
+              fontFamily="Inter"
+              fontSize={18}
+              lineHeight={30}
+              fontWeight="400"
+              $sm={{ fontSize: 14, lineHeight: 22 }}
+            >
               {subtitle}
             </Paragraph>
           </YStack>
@@ -72,6 +87,11 @@ export function ScreenFrame({
           borderWidth={1}
           color="#60452e"
           icon={ArrowLeft}
+          fontFamily="Inter"
+          fontSize={15}
+          lineHeight={24}
+          fontWeight="600"
+          $sm={{ fontSize: 13, lineHeight: 20 }}
           onPress={onBack}
         >
           Back
@@ -81,6 +101,11 @@ export function ScreenFrame({
           backgroundColor={nextDisabled ? '#c7ad95' : '#b7602d'}
           color="#fbfaf7"
           iconAfter={NextIcon}
+          fontFamily="Inter"
+          fontSize={15}
+          lineHeight={24}
+          fontWeight="600"
+          $sm={{ fontSize: 13, lineHeight: 20 }}
           shadowColor="rgba(183, 96, 45, 0.24)"
           shadowRadius={16}
           shadowOffset={{ width: 0, height: 8 }}

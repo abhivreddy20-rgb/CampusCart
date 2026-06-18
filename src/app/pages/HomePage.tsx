@@ -72,9 +72,12 @@ export function HomePage({
             <Sparkles size={16} color="#9d6a3f" />
             <Text
               color="#6f4b2d"
-              fontWeight="900"
-              fontSize={12}
+              fontFamily="Inter"
+              fontWeight="600"
+              fontSize={14}
+              lineHeight={20}
               textTransform="uppercase"
+              $sm={{ fontSize: 11, lineHeight: 16 }}
             >
               One-day campus delivery, handled with care
             </Text>
@@ -82,19 +85,23 @@ export function HomePage({
           <YStack gap="$3">
             <H1
               color="#151f1c"
-              fontSize={58}
-              lineHeight={62}
-              fontWeight="900"
+              fontFamily="Sora"
+              fontSize={48}
+              lineHeight={56}
+              fontWeight="700"
               maxWidth={680}
-              $sm={{ fontSize: 39, lineHeight: 43 }}
+              $sm={{ fontSize: 30, lineHeight: 38 }}
             >
               From home to dorm, delivered today.
             </H1>
             <Paragraph
               color="#57645f"
-              fontSize={19}
-              lineHeight={31}
+              fontFamily="Inter"
+              fontSize={18}
+              lineHeight={30}
+              fontWeight="400"
               maxWidth={650}
+              $sm={{ fontSize: 14, lineHeight: 22 }}
             >
               DormDrop helps families send meals, important documents, gifts,
               and everyday essentials directly to students through secure,
@@ -104,9 +111,14 @@ export function HomePage({
           <XStack gap="$3" flexWrap="wrap">
             <Button
               size="$5"
-              borderRadius={8}
+              borderRadius={12}
               backgroundColor="#b7602d"
               color="#fbfaf7"
+              fontFamily="Inter"
+              fontSize={15}
+              lineHeight={24}
+              fontWeight="600"
+              $sm={{ fontSize: 13, lineHeight: 20 }}
               iconAfter={ArrowRight}
               shadowColor="rgba(183, 96, 45, 0.28)"
               shadowRadius={18}
@@ -117,11 +129,16 @@ export function HomePage({
             </Button>
             <Button
               size="$5"
-              borderRadius={8}
+              borderRadius={12}
               backgroundColor="#fbfaf7"
               borderColor="#cdbfae"
               borderWidth={1}
               color="#1f2b27"
+              fontFamily="Inter"
+              fontSize={15}
+              lineHeight={24}
+              fontWeight="600"
+              $sm={{ fontSize: 13, lineHeight: 20 }}
               onPress={onLogin}
             >
               Login
@@ -140,26 +157,68 @@ export function HomePage({
             maxWidth={620}
           >
             <YStack gap="$1">
-              <Text color="#151f1c" fontSize={25} fontWeight="900">
+              <Text
+                color="#151f1c"
+                fontFamily="Sora"
+                fontSize={20}
+                lineHeight={28}
+                fontWeight="600"
+                $sm={{ fontSize: 16, lineHeight: 22 }}
+              >
                 4
               </Text>
-              <Text color="#6b766f" fontSize={13} fontWeight="700">
+              <Text
+                color="#6b766f"
+                fontFamily="Inter"
+                fontSize={14}
+                lineHeight={22}
+                fontWeight="400"
+                $sm={{ fontSize: 11, lineHeight: 16 }}
+              >
                 Delivery categories
               </Text>
             </YStack>
             <YStack gap="$1">
-              <Text color="#151f1c" fontSize={25} fontWeight="900">
+              <Text
+                color="#151f1c"
+                fontFamily="Sora"
+                fontSize={20}
+                lineHeight={28}
+                fontWeight="600"
+                $sm={{ fontSize: 16, lineHeight: 22 }}
+              >
                 1 day
               </Text>
-              <Text color="#6b766f" fontSize={13} fontWeight="700">
+              <Text
+                color="#6b766f"
+                fontFamily="Inter"
+                fontSize={14}
+                lineHeight={22}
+                fontWeight="400"
+                $sm={{ fontSize: 11, lineHeight: 16 }}
+              >
                 Campus coordination
               </Text>
             </YStack>
             <YStack gap="$1">
-              <Text color="#151f1c" fontSize={25} fontWeight="900">
+              <Text
+                color="#151f1c"
+                fontFamily="Sora"
+                fontSize={20}
+                lineHeight={28}
+                fontWeight="600"
+                $sm={{ fontSize: 16, lineHeight: 22 }}
+              >
                 Email
               </Text>
-              <Text color="#6b766f" fontSize={13} fontWeight="700">
+              <Text
+                color="#6b766f"
+                fontFamily="Inter"
+                fontSize={14}
+                lineHeight={22}
+                fontWeight="400"
+                $sm={{ fontSize: 11, lineHeight: 16 }}
+              >
                 Updates after checkout
               </Text>
             </YStack>
@@ -175,11 +234,11 @@ export function HomePage({
           $sm={{ minHeight: 540 }}
         >
           <img
-            src="/images/campus-concierge-hero.png"
+            src="/images/Image.png"
             alt="Premium campus care package handoff with flowers, pastry, and document envelope"
             style={{
               width: "100%",
-              height: "100%",
+              height: "105%",
               objectFit: "cover",
               position: "absolute",
               inset: 0,
@@ -192,20 +251,21 @@ export function HomePage({
           />
           <YStack
             position="absolute"
-            left="$5"
-            right="$5"
-            bottom="$5"
+            top="50%"
+            left="50%"
+            width="min(86%, 520px)"
             backgroundColor="rgba(255, 253, 248, 0.92)"
             borderColor="rgba(255, 255, 255, 0.7)"
             borderWidth={1}
             borderRadius={8}
-            padding="$4"
-            gap="$3"
+            padding="$3"
+            gap="$2.5"
             maxWidth={520}
             shadowColor="rgba(0, 0, 0, 0.22)"
             shadowRadius={26}
             shadowOffset={{ width: 0, height: 16 }}
-            $sm={{ left: "$3", right: "$3", bottom: "$3" }}
+            transform={[{ translateX: "-50%" }, { translateY: "-50%" }]}
+            $sm={{ width: "calc(100% - 24px)", padding: "$2.5", gap: "$2" }}
           >
             <YStack gap="$1">
               <XStack
@@ -213,12 +273,26 @@ export function HomePage({
                 justifyContent="space-between"
                 gap="$3"
               >
-                <Text color="#18231f" fontSize={18} fontWeight="900">
+                <Text
+                  color="#18231f"
+                  fontFamily="Sora"
+                  fontSize={16}
+                  lineHeight={22}
+                  fontWeight="600"
+                  $sm={{ fontSize: 13, lineHeight: 18 }}
+                >
                   Today’s campus run
                 </Text>
-                <MapPin size={19} color="#9d6a3f" />
+                <MapPin size={16} color="#9d6a3f" />
               </XStack>
-              <Text color="#61706a" fontSize={13} lineHeight={20}>
+              <Text
+                color="#61706a"
+                fontFamily="Inter"
+                fontSize={13}
+                lineHeight={20}
+                fontWeight="400"
+                $sm={{ fontSize: 11, lineHeight: 16 }}
+              >
                 A curated handoff for useful, urgent, and personal items.
               </Text>
             </YStack>
@@ -228,18 +302,33 @@ export function HomePage({
               borderColor="#e2d4c0"
               borderWidth={1}
               borderRadius={8}
-              padding="$3"
+              padding="$2.5"
               gap="$2"
+              $sm={{ padding: "$2", gap: "$1.5" }}
             >
-              <XStack alignItems="center" gap="$3">
-                <Square size={42} borderRadius={8} backgroundColor="#b7602d">
-                  <Gift size={21} color="#fff8ed" />
+              <XStack alignItems="center" gap="$3" $sm={{ gap: "$2" }}>
+                <Square size={36} borderRadius={8} backgroundColor="#b7602d" $sm={{ size: 30 }}>
+                  <Gift size={18} color="#fff8ed" />
                 </Square>
                 <YStack flex={1} gap="$1">
-                  <Text color="#18231f" fontWeight="900" fontSize={15}>
+                  <Text
+                    color="#18231f"
+                    fontFamily="Sora"
+                    fontWeight="600"
+                    fontSize={16}
+                    lineHeight={22}
+                    $sm={{ fontSize: 13, lineHeight: 18 }}
+                  >
                     Concierge handoff
                   </Text>
-                  <Text color="#6a5a43" fontSize={13} lineHeight={19}>
+                  <Text
+                    color="#6a5a43"
+                    fontFamily="Inter"
+                    fontSize={13}
+                    lineHeight={20}
+                    fontWeight="400"
+                    $sm={{ fontSize: 11, lineHeight: 16 }}
+                  >
                     Tell us what to send, where the student is, and we
                     coordinate the dropoff.
                   </Text>
@@ -247,24 +336,39 @@ export function HomePage({
               </XStack>
             </YStack>
 
-            <YStack gap="$2">
+            <YStack gap="$1.5" $sm={{ gap: "$1" }}>
               {campusRunItems.map(({ title, detail, icon: Icon }) => (
                 <XStack
                   key={title}
                   gap="$3"
                   alignItems="center"
-                  paddingVertical="$1.5"
+                  paddingVertical="$1"
                   borderBottomWidth={title === "Daily essentials" ? 0 : 1}
                   borderColor="#e8ded0"
+                  $sm={{ gap: "$2", paddingVertical: "$0.5" }}
                 >
-                  <Square size={40} borderRadius={8} backgroundColor="#f3eadb">
-                    <Icon size={20} color="#8a623d" />
+                  <Square size={34} borderRadius={8} backgroundColor="#f3eadb" $sm={{ size: 28 }}>
+                    <Icon size={17} color="#8a623d" />
                   </Square>
                   <YStack flex={1} minWidth={0} gap="$1">
-                    <Text color="#18231f" fontWeight="900" fontSize={15}>
+                    <Text
+                      color="#18231f"
+                      fontFamily="Sora"
+                      fontWeight="600"
+                      fontSize={16}
+                      lineHeight={22}
+                      $sm={{ fontSize: 13, lineHeight: 18 }}
+                    >
                       {title}
                     </Text>
-                    <Text color="#61706a" fontSize={13} lineHeight={18}>
+                    <Text
+                      color="#61706a"
+                      fontFamily="Inter"
+                      fontSize={13}
+                      lineHeight={20}
+                      fontWeight="400"
+                      $sm={{ fontSize: 11, lineHeight: 16 }}
+                    >
                       {detail}
                     </Text>
                   </YStack>

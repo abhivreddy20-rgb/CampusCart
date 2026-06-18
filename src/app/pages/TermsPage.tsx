@@ -31,7 +31,15 @@ export function TermsPage({
             <Square size={28} borderRadius={6} backgroundColor="#ffe4cf">
               <Check size={17} color="#fd8828" />
             </Square>
-            <Text flex={1} color="#33413e" lineHeight={22}>
+            <Text
+              flex={1}
+              color="#33413e"
+              fontFamily="Inter"
+              fontSize={16}
+              lineHeight={26}
+              fontWeight="400"
+              $sm={{ fontSize: 13, lineHeight: 20 }}
+            >
               {term}
             </Text>
           </XStack>
@@ -46,10 +54,25 @@ export function TermsPage({
         borderRadius={8}
       >
         <YStack gap="$1">
-          <Text color="#8a4a24" fontSize={12} fontWeight="900" textTransform="uppercase">
+          <Text
+            color="#8a4a24"
+            fontFamily="Inter"
+            fontSize={12}
+            lineHeight={18}
+            fontWeight="400"
+            textTransform="uppercase"
+            $sm={{ fontSize: 11, lineHeight: 16 }}
+          >
             Liability points
           </Text>
-          <Text color="#18231f" fontSize={17} fontWeight="900">
+          <Text
+            color="#18231f"
+            fontFamily="Sora"
+            fontSize={20}
+            lineHeight={28}
+            fontWeight="600"
+            $sm={{ fontSize: 16, lineHeight: 22 }}
+          >
             Please review before confirming
           </Text>
         </YStack>
@@ -59,7 +82,15 @@ export function TermsPage({
               <Square size={28} borderRadius={6} backgroundColor="#f1dfc8">
                 <AlertTriangle size={16} color="#b7602d" />
               </Square>
-              <Text flex={1} color="#5f6b66" lineHeight={22}>
+              <Text
+                flex={1}
+                color="#5f6b66"
+                fontFamily="Inter"
+                fontSize={16}
+                lineHeight={26}
+                fontWeight="400"
+                $sm={{ fontSize: 13, lineHeight: 20 }}
+              >
                 {point}
               </Text>
             </XStack>
@@ -85,7 +116,16 @@ export function TermsPage({
             <Check size={16} color="#fd8828" />
           </Checkbox.Indicator>
         </Checkbox>
-        <Label htmlFor="terms" flex={1} color="#20332f" lineHeight={22}>
+        <Label
+          htmlFor="terms"
+          flex={1}
+          color="#20332f"
+          fontFamily="Inter"
+          fontSize={16}
+          lineHeight={26}
+          fontWeight="400"
+          $sm={{ fontSize: 13, lineHeight: 20 }}
+        >
           I agree to the terms and conditions for this CampusCart delivery.
         </Label>
       </XStack>

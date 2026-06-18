@@ -6,7 +6,14 @@ import { Button, Label, Square, Text, XStack, YStack } from 'tamagui'
 export function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <YStack gap="$2">
-      <Label color="#24312d" fontWeight="900" fontSize={14}>
+      <Label
+        color="#24312d"
+        fontFamily="Inter"
+        fontWeight="400"
+        fontSize={14}
+        lineHeight={22}
+        $sm={{ fontSize: 12, lineHeight: 18 }}
+      >
         {label}
       </Label>
       {children}
@@ -79,7 +86,13 @@ export function OptionRow({
               }}
             />
           ) : fallbackText ? (
-            <Text color={active ? '#fff8ed' : '#8a623d'} fontWeight="900" fontSize={15}>
+            <Text
+              color={active ? '#fff8ed' : '#8a623d'}
+              fontFamily="Inter"
+              fontWeight="600"
+              fontSize={15}
+              lineHeight={24}
+            >
               {fallbackText}
             </Text>
           ) : (
@@ -87,20 +100,49 @@ export function OptionRow({
           )}
         </Square>
         <YStack flex={1} minWidth={0} gap="$1">
-          <Text color="#18231f" fontWeight="900" fontSize={17}>
+          <Text
+            color="#18231f"
+            fontFamily="Sora"
+            fontWeight="600"
+            fontSize={20}
+            lineHeight={28}
+            $sm={{ fontSize: 16, lineHeight: 22 }}
+          >
             {title}
           </Text>
-          <Text color="#63716c" lineHeight={21}>
+          <Text
+            color="#63716c"
+            fontFamily="Inter"
+            fontSize={16}
+            lineHeight={26}
+            fontWeight="400"
+            $sm={{ fontSize: 13, lineHeight: 20 }}
+          >
             {description}
           </Text>
           {details?.length ? (
             <YStack gap="$1" paddingTop="$1">
               {details.map((detail) => (
                 <XStack key={detail.label} gap="$2" alignItems="baseline" flexWrap="wrap">
-                  <Text color="#8a4a24" fontSize={12} fontWeight="900" textTransform="uppercase">
+                  <Text
+                    color="#8a4a24"
+                    fontFamily="Inter"
+                    fontSize={14}
+                    lineHeight={22}
+                    fontWeight="400"
+                    textTransform="uppercase"
+                  >
                     {detail.label}
                   </Text>
-                  <Text color="#4f5d58" fontSize={13} lineHeight={19} flex={1}>
+                  <Text
+                    color="#4f5d58"
+                    fontFamily="Inter"
+                    fontSize={16}
+                    lineHeight={26}
+                    fontWeight="400"
+                    flex={1}
+                    $sm={{ fontSize: 13, lineHeight: 20 }}
+                  >
                     {detail.value}
                   </Text>
                 </XStack>
@@ -117,8 +159,26 @@ export function OptionRow({
 export function SummaryLine({ label, value, strong = false }: { label: string; value: string; strong?: boolean }) {
   return (
     <XStack justifyContent="space-between" gap="$4" alignItems="center">
-      <Text color="#63716c">{label}</Text>
-      <Text color="#18231f" fontWeight={strong ? '900' : '700'} textAlign="right" flex={1}>
+      <Text
+        color="#63716c"
+        fontFamily="Inter"
+        fontSize={16}
+        lineHeight={26}
+        fontWeight="400"
+        $sm={{ fontSize: 13, lineHeight: 20 }}
+      >
+        {label}
+      </Text>
+      <Text
+        color="#18231f"
+        fontFamily={strong ? 'Sora' : 'Inter'}
+        fontWeight={strong ? '600' : '400'}
+        fontSize={strong ? 20 : 16}
+        lineHeight={strong ? 28 : 26}
+        textAlign="right"
+        flex={1}
+        $sm={{ fontSize: strong ? 16 : 13, lineHeight: strong ? 22 : 20 }}
+      >
         {value}
       </Text>
     </XStack>

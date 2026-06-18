@@ -17,7 +17,14 @@ export function TrustPill({ icon: Icon, text }: { icon: LucideIcon; text: string
       shadowOffset={{ width: 0, height: 8 }}
     >
       <Icon size={16} color="#9d6a3f" />
-      <Text color="#2f3c38" fontSize={13} fontWeight="800">
+      <Text
+        color="#2f3c38"
+        fontFamily="Inter"
+        fontSize={15}
+        lineHeight={24}
+        fontWeight="500"
+        $sm={{ fontSize: 12, lineHeight: 18 }}
+      >
         {text}
       </Text>
     </XStack>
