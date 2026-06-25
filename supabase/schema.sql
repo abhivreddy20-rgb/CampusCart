@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS public.pickup_locations (
 
 CREATE TABLE IF NOT EXISTS public.parent_profiles (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID UNIQUE REFERENCES auth.users(id) ON DELETE CASCADE,
   parent_name TEXT NOT NULL,
   parent_email TEXT NOT NULL UNIQUE,
   parent_phone TEXT NOT NULL,
@@ -67,6 +68,7 @@ CREATE INDEX IF NOT EXISTS orders_parent_profile_id_idx ON public.orders(parent_
 CREATE INDEX IF NOT EXISTS orders_status_idx ON public.orders(status);
 CREATE INDEX IF NOT EXISTS orders_created_at_idx ON public.orders(created_at);
 CREATE INDEX IF NOT EXISTS parent_profiles_parent_email_idx ON public.parent_profiles(parent_email);
+CREATE INDEX IF NOT EXISTS parent_profiles_user_id_idx ON public.parent_profiles(user_id);
 CREATE INDEX IF NOT EXISTS pre_registrations_parent_email_idx ON public.pre_registrations(parent_email);
 CREATE INDEX IF NOT EXISTS pre_registrations_college_name_idx ON public.pre_registrations(college_name);
 CREATE INDEX IF NOT EXISTS pickup_locations_college_active_sort_idx ON public.pickup_locations(college_id, active, sort_order);
@@ -79,6 +81,8 @@ ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
 
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
 GRANT INSERT ON public.pre_registrations TO anon, authenticated;
+GRANT SELECT, INSERT, UPDATE ON public.parent_profiles TO authenticated;
+GRANT SELECT, INSERT ON public.orders TO authenticated;
 
 CREATE POLICY "Anyone can read active colleges"
 ON public.colleges
@@ -92,36 +96,61 @@ FOR SELECT
 TO anon, authenticated
 USING (active = TRUE);
 
-CREATE POLICY "Anyone can create prototype orders"
+CREATE POLICY "Parents can create their own orders"
 ON public.orders
 FOR INSERT
-TO anon, authenticated
-WITH CHECK (TRUE);
+TO authenticated
+WITH CHECK (
+  EXISTS (
+    SELECT 1
+    FROM public.parent_profiles
+    WHERE parent_profiles.id = orders.parent_profile_id
+      AND parent_profiles.user_id = auth.uid()
+  )
+);
 
-CREATE POLICY "Anyone can create prototype parent profiles"
+CREATE POLICY "Parents can create their own profile"
 ON public.parent_profiles
 FOR INSERT
-TO anon, authenticated
-WITH CHECK (TRUE);
+TO authenticated
+WITH CHECK (user_id = auth.uid());
 
 CREATE POLICY "Anyone can create pre registrations"
 ON public.pre_registrations
 FOR INSERT
 TO anon, authenticated
-WITH CHECK (TRUE);
+WITH CHECK (
+  length(parent_name) BETWEEN 1 AND 120
+  AND parent_email ~* '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'
+  AND parent_phone ~ '^[0-9]{10}$'
+  AND length(college_name) BETWEEN 1 AND 120
+);
 
-CREATE POLICY "Anyone can read prototype parent profiles"
+CREATE POLICY "Parents can read their own profile"
 ON public.parent_profiles
 FOR SELECT
-TO anon, authenticated
-USING (TRUE);
+TO authenticated
+USING (user_id = auth.uid());
 
-CREATE POLICY "Anyone can update prototype parent profiles"
+CREATE POLICY "Parents can update their own profile"
 ON public.parent_profiles
 FOR UPDATE
-TO anon, authenticated
-USING (TRUE)
-WITH CHECK (TRUE);
+TO authenticated
+USING (user_id = auth.uid())
+WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Parents can read their own orders"
+ON public.orders
+FOR SELECT
+TO authenticated
+USING (
+  EXISTS (
+    SELECT 1
+    FROM public.parent_profiles
+    WHERE parent_profiles.id = orders.parent_profile_id
+      AND parent_profiles.user_id = auth.uid()
+  )
+);
 
 INSERT INTO public.colleges (name, city, state)
 VALUES

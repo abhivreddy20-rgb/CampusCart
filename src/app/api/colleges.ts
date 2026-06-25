@@ -13,7 +13,7 @@ export async function getActiveColleges(): Promise<College[]> {
     .order('name', { ascending: true })
 
   if (error) {
-    throw error
+    throw new Error('Colleges could not be loaded. Please try again.')
   }
 
   return data ?? []

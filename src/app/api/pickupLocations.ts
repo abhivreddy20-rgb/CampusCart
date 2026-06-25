@@ -14,7 +14,7 @@ export async function getActivePickupLocations(): Promise<PickupLocation[]> {
     .order('name', { ascending: true })
 
   if (error) {
-    throw error
+    throw new Error('Pickup locations could not be loaded. Please try again.')
   }
 
   return data ?? []

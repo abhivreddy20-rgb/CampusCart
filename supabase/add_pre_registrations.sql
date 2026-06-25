@@ -26,6 +26,11 @@ CREATE POLICY "Anyone can create pre registrations"
 ON public.pre_registrations
 FOR INSERT
 TO anon, authenticated
-WITH CHECK (TRUE);
+WITH CHECK (
+  length(parent_name) BETWEEN 1 AND 120
+  AND parent_email ~* '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'
+  AND parent_phone ~ '^[0-9]{10}$'
+  AND length(college_name) BETWEEN 1 AND 120
+);
 
 NOTIFY pgrst, 'reload schema';

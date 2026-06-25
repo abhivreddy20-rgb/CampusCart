@@ -100,6 +100,14 @@ export function ScreenFrame({
           borderRadius={8}
           backgroundColor={nextDisabled ? '#c7ad95' : '#b7602d'}
           color="#fbfaf7"
+          hoverStyle={{
+            backgroundColor: nextDisabled ? '#c7ad95' : '#9f5428',
+            color: '#fbfaf7',
+          }}
+          pressStyle={{
+            backgroundColor: nextDisabled ? '#c7ad95' : '#864721',
+            color: '#fbfaf7',
+          }}
           iconAfter={NextIcon}
           fontFamily="Inter"
           fontSize={15}
